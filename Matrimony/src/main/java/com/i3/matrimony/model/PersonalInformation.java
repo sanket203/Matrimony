@@ -1,5 +1,7 @@
 package com.i3.matrimony.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +34,7 @@ public class PersonalInformation {
 	private String gender;
 	
 	@Column(name="dateOfBirth")
-	private String dateOfBirth;
+	private Date dateOfBirth;
 	
 	@Column(name="landline")
 	private String landline;
@@ -48,6 +50,15 @@ public class PersonalInformation {
 	
 	@Column(name="password")
 	private String password;
+	
+	@Column(name="addedBy")
+	private String addedBy;
+	
+	@Column(name="registrationDate")
+	private Date registrationDate;
+	
+	@Column(name="lastLogin")
+	private Date lastLogin;
 
 	public long getId() {
 		return id;
@@ -105,11 +116,11 @@ public class PersonalInformation {
 		this.gender = gender;
 	}
 
-	public String getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -152,6 +163,32 @@ public class PersonalInformation {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	public String getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(String addedBy) {
+		this.addedBy = addedBy;
+	}
+
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+
 
 	@Override
 	public String toString() {
