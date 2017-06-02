@@ -6,6 +6,11 @@ public class ResponseMessage {
 	private Object data;
 	private String message;
 	
+	public ResponseMessage(String status ,String message) {
+		this.status = status;
+		this.message=message;
+		
+	}
 	public String getStatus() {
 		return status;
 	}

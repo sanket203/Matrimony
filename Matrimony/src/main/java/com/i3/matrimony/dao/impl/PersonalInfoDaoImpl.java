@@ -38,13 +38,30 @@ public class PersonalInfoDaoImpl implements PersonalInfoDao {
 	}
 
 	@Override
-	public PersonalInformation getPersonalInformation(long id) throws Exception{
+	public PersonalInformation getPersonalInformation(long userId) throws Exception{
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformation personalInfo = null;
 		try{
 			Transaction tr = session.beginTransaction();
-			Query selectQuery = session.createQuery("from PersonalInformation where id = :id");
-	        selectQuery.setLong("id", id);
+			Query selectQuery = session.createQuery("from PersonalInformation where userId = :userId");
+	        selectQuery.setLong("userId", userId);
+	        personalInfo = (PersonalInformation)selectQuery.uniqueResult();
+		} finally {
+			if(session.isOpen()){
+				session.close();
+			}
+		}
+		return personalInfo;
+	}
+	
+	@Override
+	public PersonalInformation getPersonalInformation(String email) throws Exception{
+		Session session = sessionFactory.getCurrentSession();
+		PersonalInformation personalInfo = null;
+		try{
+			Transaction tr = session.beginTransaction();
+			Query selectQuery = session.createQuery("from PersonalInformation where email = :email");
+	        selectQuery.setString("email", email);
 	        personalInfo = (PersonalInformation)selectQuery.uniqueResult();
 		} finally {
 			if(session.isOpen()){
