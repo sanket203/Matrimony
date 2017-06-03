@@ -16,7 +16,7 @@ public class PersonalInformation {
 	private long id;
 	
 	@Column(name="userId")
-	private long userId;
+	private String userId;
 	
 	@Column(name="firstName")
 	private String firstName;
@@ -68,11 +68,11 @@ public class PersonalInformation {
 		this.id = id;
 	}
 
-	public long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

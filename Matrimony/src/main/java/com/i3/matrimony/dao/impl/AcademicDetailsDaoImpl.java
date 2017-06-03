@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.i3.matrimony.dao.AcademicDetailsDao;
 import com.i3.matrimony.model.AcademicDetails;
-import com.i3.matrimony.model.AcademicDetails;
 
 @Component
 public class AcademicDetailsDaoImpl implements AcademicDetailsDao {
@@ -33,13 +32,13 @@ public class AcademicDetailsDaoImpl implements AcademicDetailsDao {
 	}
 
 	@Override
-	public AcademicDetails getAcademicDetailsById(long userId) throws Exception{
+	public AcademicDetails getAcademicDetailsById(String userId) throws Exception{
 		Session session = sessionFactory.getCurrentSession();
 		AcademicDetails academicInfo = new AcademicDetails();
 		try{
 			Transaction tr = session.beginTransaction();
 			Query selectQuery = session.createQuery("from AcademicDetails where userId = :userId");
-	        selectQuery.setLong("userId", userId);
+	        selectQuery.setString("userId", userId);
 	        academicInfo = (AcademicDetails)selectQuery.uniqueResult();
 		} finally {
 			if(session.isOpen()){

@@ -6,6 +6,6 @@ public interface PhysicaDetailsDao {
 
     public String createPhysicalDetails(final PhysicalDetails physicalData);
 	
-	public PhysicalDetails getPhysicalDetailsById(final long userId) throws Exception;
+	public PhysicalDetails getPhysicalDetailsById(final String userId) throws Exception;
 
 }

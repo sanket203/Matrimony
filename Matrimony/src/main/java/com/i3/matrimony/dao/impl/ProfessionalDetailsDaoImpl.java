@@ -5,11 +5,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.i3.matrimony.dao.ProfessionalDetailsDao;
-import com.i3.matrimony.model.PhysicalDetails;
 import com.i3.matrimony.model.ProfessionalDetails;
 
+@Component
 public class ProfessionalDetailsDaoImpl implements ProfessionalDetailsDao {
 
 	@Autowired
@@ -31,13 +32,13 @@ public class ProfessionalDetailsDaoImpl implements ProfessionalDetailsDao {
 	}
 
 	@Override
-	public ProfessionalDetails getProfessionalDetailsById(long userId) throws Exception {
+	public ProfessionalDetails getProfessionalDetailsById(String userId) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		ProfessionalDetails professionalInfo = new ProfessionalDetails();
 		try{
 			Transaction tr = session.beginTransaction();
 			Query selectQuery = session.createQuery("from ProfessionalDetails where userId = :userId");
-	        selectQuery.setLong("userId", userId);
+	        selectQuery.setString("userId", userId);
 	        professionalInfo = (ProfessionalDetails)selectQuery.uniqueResult();
 		} finally {
 			if(session.isOpen()){

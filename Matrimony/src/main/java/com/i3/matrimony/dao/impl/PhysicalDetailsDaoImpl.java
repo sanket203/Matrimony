@@ -5,11 +5,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.i3.matrimony.dao.PhysicaDetailsDao;
-import com.i3.matrimony.model.AcademicDetails;
 import com.i3.matrimony.model.PhysicalDetails;
 
+@Component
 public class PhysicalDetailsDaoImpl implements PhysicaDetailsDao {
 	
 	@Autowired
@@ -31,13 +32,13 @@ public class PhysicalDetailsDaoImpl implements PhysicaDetailsDao {
 	}
 
 	@Override
-	public PhysicalDetails getPhysicalDetailsById(long userId) throws Exception {
+	public PhysicalDetails getPhysicalDetailsById(String userId) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		PhysicalDetails physicalInfo = new PhysicalDetails();
 		try{
 			Transaction tr = session.beginTransaction();
 			Query selectQuery = session.createQuery("from PhysicalDetails where userId = :userId");
-	        selectQuery.setLong("userId", userId);
+	        selectQuery.setString("userId", userId);
 	        physicalInfo = (PhysicalDetails)selectQuery.uniqueResult();
 		} finally {
 			if(session.isOpen()){

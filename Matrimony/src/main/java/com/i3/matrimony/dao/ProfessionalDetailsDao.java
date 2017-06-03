@@ -6,6 +6,6 @@ public interface ProfessionalDetailsDao {
 
     public String createProfessionaalProfile(final ProfessionalDetails professionalData);
 	
-	public ProfessionalDetails getProfessionalDetailsById(final long userId) throws Exception;
+	public ProfessionalDetails getProfessionalDetailsById(final String userId) throws Exception;
 
 }

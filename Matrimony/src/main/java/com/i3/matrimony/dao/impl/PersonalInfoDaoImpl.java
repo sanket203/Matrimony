@@ -38,13 +38,13 @@ public class PersonalInfoDaoImpl implements PersonalInfoDao {
 	}
 
 	@Override
-	public PersonalInformation getPersonalInformation(long userId) throws Exception{
+	public PersonalInformation getPersonalInformation(String userId) throws Exception{
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformation personalInfo = null;
 		try{
 			Transaction tr = session.beginTransaction();
 			Query selectQuery = session.createQuery("from PersonalInformation where userId = :userId");
-	        selectQuery.setLong("userId", userId);
+	        selectQuery.setString("userId", userId);
 	        personalInfo = (PersonalInformation)selectQuery.uniqueResult();
 		} finally {
 			if(session.isOpen()){
@@ -54,7 +54,7 @@ public class PersonalInfoDaoImpl implements PersonalInfoDao {
 		return personalInfo;
 	}
 	
-	@Override
+	/*@Override
 	public PersonalInformation getPersonalInformation(String email) throws Exception{
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformation personalInfo = null;
@@ -62,6 +62,24 @@ public class PersonalInfoDaoImpl implements PersonalInfoDao {
 			Transaction tr = session.beginTransaction();
 			Query selectQuery = session.createQuery("from PersonalInformation where email = :email");
 	        selectQuery.setString("email", email);
+	        personalInfo = (PersonalInformation)selectQuery.uniqueResult();
+		} finally {
+			if(session.isOpen()){
+				session.close();
+			}
+		}
+		return personalInfo;
+	}*/
+
+	@Override
+	public PersonalInformation validateUser(String email, String password) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		PersonalInformation personalInfo = null;
+		try{
+			Transaction tr = session.beginTransaction();
+			Query selectQuery = session.createQuery("from PersonalInformation where email = :email and password = :password");
+	        selectQuery.setString("email", email);
+	        selectQuery.setString("password", password);
 	        personalInfo = (PersonalInformation)selectQuery.uniqueResult();
 		} finally {
 			if(session.isOpen()){

@@ -8,7 +8,11 @@ public interface PersonalInfoDao {
 	
 	public String editPersonalInfo(final PersonalInformation personalinfo) throws Exception;
 	
-	public PersonalInformation getPersonalInformation(long userId) throws Exception; 
+	public PersonalInformation getPersonalInformation(String userId) throws Exception; 
 	
-	public PersonalInformation getPersonalInformation(String email) throws Exception; 
+	//public PersonalInformation getPersonalInformation(String email) throws Exception; 
+	
+	public PersonalInformation validateUser(String email, String password) throws Exception; 
+	
+	
 }

@@ -6,6 +6,6 @@ public interface AcademicDetailsDao {
 	
 	public String createAcademicProfile(final AcademicDetails academicData);
 	
-	public AcademicDetails getAcademicDetailsById(final long userId) throws Exception;
+	public AcademicDetails getAcademicDetailsById(final String userId) throws Exception;
 
 }
