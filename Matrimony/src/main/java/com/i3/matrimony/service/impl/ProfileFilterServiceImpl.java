@@ -27,7 +27,7 @@ import com.i3.matrimony.utils.ResponseMessage;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class ProfileFilterServiceImpl implements ProfileFilterService{
 	
-public static final String SERVICE_NAME = "PersonalInfoService";
+public static final String SERVICE_NAME = "ProfileFilterServiceImpl";
 	
 	@Autowired
 	private PersonalInfoDao personalInfoDao;
@@ -52,7 +52,7 @@ public static final String SERVICE_NAME = "PersonalInfoService";
 		try {
 			 personalData = personalInfoDao.getPersonalInformation(profileId);
 			 if(personalData != null){
-				setViewDetails(personalData);
+				 viewDetails = setViewDetails(personalData);
 			 }
 			 message = new ResponseMessage("200", null);
 			 message.setData(viewDetails);

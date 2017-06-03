@@ -1,5 +1,7 @@
 package com.i3.matrimony.dao.impl;
 
+import java.util.Date;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -81,6 +83,13 @@ public class PersonalInfoDaoImpl implements PersonalInfoDao {
 	        selectQuery.setString("email", email);
 	        selectQuery.setString("password", password);
 	        personalInfo = (PersonalInformation)selectQuery.uniqueResult();
+	        if(personalInfo != null) {
+	        	selectQuery = session.createQuery("update PersonalInformation set lastLogin= :lastLogin where userId= :userId");
+	        	selectQuery.setDate("lastLogin", new Date());
+	        	selectQuery.setString("userId", personalInfo.getUserId());
+	        	selectQuery.executeUpdate();
+	        	tr.commit();
+	        }
 		} finally {
 			if(session.isOpen()){
 				session.close();

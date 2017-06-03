@@ -20,7 +20,7 @@ import com.i3.matrimony.utils.Validations;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class PersonalInfoServiceImpl implements PersonalInfoService {
 	
-	public static final String SERVICE_NAME = "PersonalInfoService";
+	public static final String SERVICE_NAME = "PersonalInfoServiceImpl";
 	
 	@Autowired
 	PersonalInfoDao personalInfoDao;

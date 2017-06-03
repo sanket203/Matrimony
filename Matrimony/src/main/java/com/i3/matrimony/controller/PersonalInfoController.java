@@ -24,8 +24,7 @@ public class PersonalInfoController {
 	private PersonalInfoService personalInfoService;
 
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST, consumes = "application/json")
-	public @ResponseBody ResponseMessage addUser(
-			@RequestBody final PersonalInformation userJson) {
+	public @ResponseBody ResponseMessage addUser(@RequestBody final PersonalInformation userJson) {
 
 		ResponseMessage message = personalInfoService.addUser(userJson);
 		return message;

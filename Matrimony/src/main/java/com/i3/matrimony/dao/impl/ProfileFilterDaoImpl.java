@@ -34,8 +34,8 @@ public class ProfileFilterDaoImpl implements ProfileFilterDao {
 		try{
 			Transaction tr = session.beginTransaction();
 			Criteria criteria = session.createCriteria(PersonalInformation.class);
-			Criterion cond1 = Restrictions.eq("gender", "Male");
-			Criterion cond2 = Restrictions.gt("dateOfBirth", sessionObject.getBirthDate());
+			Criterion cond1 = Restrictions.eq("gender", "male");
+			Criterion cond2 = Restrictions.lt("dateOfBirth", sessionObject.getBirthDate());
 			LogicalExpression logicAnd = Restrictions.and(cond1, cond2);
 			criteria.add(logicAnd);
 			criteria.addOrder(Order.desc("lastLogin"));
@@ -50,8 +50,23 @@ public class ProfileFilterDaoImpl implements ProfileFilterDao {
 
 	@Override
 	public List<PersonalInformation> getFemaleProfiles(SessionObject sessionObject) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		List<PersonalInformation> personalInfo = new LinkedList<PersonalInformation>();
+		try{
+			Transaction tr = session.beginTransaction();
+			Criteria criteria = session.createCriteria(PersonalInformation.class);
+			Criterion cond1 = Restrictions.eq("gender", "female");
+			Criterion cond2 = Restrictions.gt("dateOfBirth", sessionObject.getBirthDate());
+			LogicalExpression logicAnd = Restrictions.and(cond1, cond2);
+			criteria.add(logicAnd);
+			criteria.addOrder(Order.desc("lastLogin"));
+			personalInfo = criteria.list();
+		} finally {
+			if(session.isOpen()){
+				session.close();
+			}
+		}
+		return personalInfo;
 	}
 
 	@Override
