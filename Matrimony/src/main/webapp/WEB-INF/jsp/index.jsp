@@ -20,6 +20,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-2.0.3.min.js' />" defer="true"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js' />" defer="true"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/angular.js' />" defer="true"></script>
 <!-- Custom Theme files>
 <link href="css/style.css" rel='stylesheet' type='text/css' /-->
 

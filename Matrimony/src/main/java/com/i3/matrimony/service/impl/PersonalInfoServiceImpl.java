@@ -34,6 +34,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService {
 		try {
 		    Validations.validatePersonalInfo(userJson);
 			userJson.setRegistrationDate(new Date());
+			userJson.setLastLogin(new Date());
 			String userId = createUserId(userJson.getGender());
 			userJson.setUserId(userId);
 			message = personalInfoDao.addPersonalInfo(userJson);

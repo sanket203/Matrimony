@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<title>Marital an Wedding Category Flat Bootstarp Resposive Website Template | Login :: w3layouts</title>
+<title>Marital an Wedding Category</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Marital Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -16,9 +16,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.flexslider.js' />" defer="true"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.flexisel.js' />" defer="true"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js" type="text/javascript"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins)>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.min.js' />" defer="true"></script-->
 <script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js' />" defer="true"></script>
+
 <!-- Custom Theme files>
 <link href="css/style.css" rel='stylesheet' type='text/css' /-->
 <link href='//fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
@@ -44,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  <ul>
 					<li><a href="loginPage">Login</a></li>
 					<li><a href="registrationPage">Register</a></li>
-					<li><a href="indexPage">Logout</a></li>
+					<li><a href="logout">Logout</a></li>
 				  </ul>
 				</li>
 			   </ul>
@@ -68,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 		        <ul class="nav navbar-nav nav_1">
 		            <li><a href="index">Home</a></li>
-		            <li><a href="about">About</a></li>
+		            <li><a href="editProfile">My Profile</a></li>
 		    		<li class="dropdown">
 		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Matches<span class="caret"></span></a>
 		              <ul class="dropdown-menu" role="menu">

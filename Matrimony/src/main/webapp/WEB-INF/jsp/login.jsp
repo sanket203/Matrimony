@@ -77,7 +77,7 @@ $(document).ready(function(){
 		   <!-- Collect the nav links, forms, and other content for toggling -->
 		   <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 		        <ul class="nav navbar-nav nav_1">
-		            <li><a href="index.html">Home</a></li>
+		            <li><a href="index">Home</a></li>
 		            <li><a href="loginPage">Login</a></li>
 					<li><a href="#">FAQ</a></li>
 		            <li><a href="aboutUs">About Us</a></li>
@@ -95,7 +95,7 @@ $(document).ready(function(){
   <div class="container">
    <div class="breadcrumb1">
      <ul>
-        <a href="index.html"><i class="fa fa-home home_1"></i></a>
+        <a href="index"><i class="fa fa-home home_1"></i></a>
         <span class="divider">&nbsp;|&nbsp;</span>
         <li class="current-page">Login</li>
      </ul>
@@ -105,14 +105,14 @@ $(document).ready(function(){
 	   <form>
   	    <div class="form-item form-type-textfield form-item-name">
 	      <label for="edit-name">Username <span class="form-required" title="This field is required.">*</span></label>
-	      <input type="text" id="edit-name" name="name" value="" size="60" maxlength="60" class="form-text required">
+	      <input type="text" id="login_name" name="name" value="" size="60" maxlength="60" class="form-text required">
 	    </div>
 	    <div class="form-item form-type-password form-item-pass">
 	      <label for="edit-pass">Password <span class="form-required" title="This field is required.">*</span></label>
-	      <input type="password" id="edit-pass" name="pass" size="60" maxlength="128" class="form-text required">
+	      <input type="password" id="login_pwd" name="pass" size="60" maxlength="128" class="form-text required">
 	    </div>
 	    <div class="form-actions">
-	    	<input type="submit" id="edit-submit" name="op" value="Log in" class="btn_1 submit">
+	    	<div id="login" class="btn_1 submit">Login</div>
 	    </div>
 	   </form>
 	  </div>
@@ -158,3 +158,35 @@ $(document).ready(function(){
 </div>
 </body>
 </html>	
+<script>
+$(document).ready(function(){
+	$("#login").click(function(){
+		var id=$("#login_name").val();
+		var pwd=$("#login_pwd").val();
+		
+		var requestData = {
+		
+		userName : id,
+		password : pwd
+		}
+		$.ajax({
+		type : "POST",
+		contentType : "application/json",
+		url : "validateUser",
+		data : JSON.stringify(requestData),
+		dataType : "json",
+		success : function(data) {
+			
+			if(data.status == "200"){
+			window.location.href = "matchesPage"
+			}else{
+			}
+		},
+		error : function(e) {
+			console.log("ERROR: ", e);
+		}
+	});
+		
+	});
+});
+</script>

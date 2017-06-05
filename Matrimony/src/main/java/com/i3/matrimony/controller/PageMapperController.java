@@ -1,5 +1,9 @@
 package com.i3.matrimony.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -10,6 +14,18 @@ public class PageMapperController {
 	
 	@RequestMapping(value="/")
     public String openIndexPage() {
+		return "index";
+	}
+	
+	@RequestMapping(value="/index")
+    public String openHomePage() {
+		return "index";
+	}
+	
+	@RequestMapping(value="/logout")
+    public String openLogoutPage(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		session.invalidate();
 		return "index";
 	}
 	
@@ -31,6 +47,11 @@ public class PageMapperController {
 	@RequestMapping(value="/contactPage")
     public String openContactPage() {
 		return "contact";
+	}
+	
+	@RequestMapping(value="/editProfile")
+    public String openProfileSetPage() {
+		return "profile_setup";
 	}
 	
 	@RequestMapping(value="/searchPage")
